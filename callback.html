@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authenticating with Swiggy...</title>
+  <style>
+    body {
+      background: #0f1015;
+      color: #f3f4f8;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .spinner {
+      width: 44px;
+      height: 44px;
+      border: 4px solid rgba(252, 128, 25, 0.2);
+      border-top-color: #fc8019;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 20px;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    h2 { font-size: 1.3rem; margin-bottom: 8px; }
+    p { color: #9ba1b6; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <div class="spinner"></div>
+  <h2>Connecting Swiggy Account...</h2>
+  <p id="statusMsg">Exchanging authorization code...</p>
+
+  <script>
+    (async function() {
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get('code');
+      const state = params.get('state');
+      const error = params.get('error');
+
+      if (error) {
+        document.getElementById('statusMsg').textContent = 'Error: ' + (params.get('error_description') || error);
+        return;
+      }
+
+      if (code) {
+        const verifier = localStorage.getItem('swiggy_pkce_verifier') || '';
+        try {
+          const res = await fetch('https://mcp.swiggy.com/auth/token', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              grant_type: 'authorization_code',
+              code: code,
+              code_verifier: verifier,
+              redirect_uri: window.location.origin + window.location.pathname
+            })
+          });
+
+          const tokenData = await res.json();
+          if (tokenData.access_token) {
+            localStorage.setItem('swiggy_access_token', tokenData.access_token);
+            if (tokenData.refresh_token) {
+              localStorage.setItem('swiggy_refresh_token', tokenData.refresh_token);
+            }
+            document.getElementById('statusMsg').textContent = 'Authenticated! Redirecting...';
+            setTimeout(() => {
+              window.location.href = './index.html';
+            }, 800);
+          } else {
+            document.getElementById('statusMsg').textContent = 'Token exchange failed: ' + (tokenData.error_description || 'Unknown error');
+          }
+        } catch (e) {
+          // If offline / CORS in dev, save code and redirect
+          localStorage.setItem('swiggy_auth_code', code);
+          window.location.href = './index.html';
+        }
+      } else {
+        document.getElementById('statusMsg').textContent = 'No authorization code received.';
+      }
+    })();
+  </script>
+</body>
+</html>
