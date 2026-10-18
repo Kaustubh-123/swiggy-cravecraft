@@ -1,0 +1,13 @@
+{
+  "github.copilot.chat.mcp.servers": {
+    "swiggy-food": {
+      "url": "https://mcp.swiggy.com/food"
+    },
+    "swiggy-instamart": {
+      "url": "https://mcp.swiggy.com/im"
+    },
+    "swiggy-dineout": {
+      "url": "https://mcp.swiggy.com/dineout"
+    }
+  }
+}
