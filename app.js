@@ -93,10 +93,10 @@ async function runCravingQuery() {
 
     // 2. Swiggy Instamart Recipe Decomposition & Tool Call
     const groceryList = mcp.decomposeCravingToGroceries(craving);
-    const mainIngredient = groceryList[0] || { query: craving };
     const imPromise = mcp.callTool('im', 'search_products', {
-      query: mainIngredient.query,
-      addressId: 'addr_user_home'
+      query: craving,
+      addressId: 'addr_user_home',
+      groceries: groceryList
     });
 
     const [foodRes, imRes] = await Promise.all([foodPromise, imPromise]);
@@ -127,40 +127,43 @@ function renderFoodResults(res, query) {
 
   let html = '';
   restaurants.forEach(r => {
-    const dish = r.dishes?.[0] || { name: query, price: 300, isVeg: true, rating: 4.4 };
+    const dishes = r.dishes && r.dishes.length > 0 ? r.dishes : [{ name: query, price: 220, isVeg: true, rating: 4.4, description: 'Freshly prepared and delivered warm.' }];
     const coupon = r.coupons?.[0] || { code: 'SWIGGYIT', discount: '20% OFF' };
 
-    html += `
-      <div class="food-card">
-        <div class="card-top">
-          <div>
-            <div class="dish-title">
-              <span style="display:inline-block; width:10px; height:10px; border-radius:2px; border:2px solid ${dish.isVeg ? '#22c55e' : '#ef4444'};"></span>
-              ${dish.name}
+    dishes.forEach(dish => {
+      html += `
+        <div class="food-card">
+          <div class="card-top">
+            <div>
+              <div class="dish-title">
+                <span style="display:inline-block; width:10px; height:10px; border-radius:2px; border:2px solid ${dish.isVeg ? '#22c55e' : '#ef4444'};"></span>
+                ${dish.name}
+              </div>
+              <div class="restaurant-meta">
+                <span>🏠 <strong>${r.name}</strong></span>
+                <span>⭐ ${dish.rating || r.rating || 4.5}</span>
+                <span>⏱️ ${r.sla?.deliveryTime || 22} mins</span>
+              </div>
             </div>
-            <div class="restaurant-meta">
-              <span>🏠 <strong>${r.name}</strong></span>
-              <span>⭐ ${r.rating}</span>
-              <span>⏱️ ${r.sla?.deliveryTime || 25} mins</span>
-            </div>
+            <div class="dish-price">₹${dish.price}</div>
           </div>
-          <div class="dish-price">₹${dish.price}</div>
-        </div>
 
-        <p class="dish-desc">${dish.description || 'Authentic preparation delivered warm to your doorstep.'}</p>
+          <p class="dish-desc">${dish.description || 'Authentic preparation delivered warm to your doorstep.'}</p>
 
-        <div class="card-footer">
-          <span class="coupon-badge">🏷️ ${coupon.code}: ${coupon.discount}</span>
-          <button class="btn-action-sm" onclick="prepareFoodCart('${r.id}', '${dish.id}', '${dish.name}', ${dish.price})">
-            Add to Food Cart
-          </button>
+          <div class="card-footer">
+            <span class="coupon-badge">🏷️ ${coupon.code}: ${coupon.discount}</span>
+            <button class="btn-action-sm" onclick="prepareFoodCart('${r.id}', '${dish.id}', '${dish.name.replace(/'/g, "\\'")}', ${dish.price})">
+              Add to Food Cart
+            </button>
+          </div>
         </div>
-      </div>
-    `;
+      `;
+    });
   });
 
   foodResultsContainer.innerHTML = html;
 }
+
 
 /**
  * Render Swiggy Instamart ingredients & products
