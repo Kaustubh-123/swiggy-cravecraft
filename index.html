@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Swiggy CraveCraft | AI Craving & Grocery Copilot (MCP)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,20 +23,13 @@
       --text-main: #f3f4f8;
       --text-muted: #9ba1b6;
       --text-faint: #63687e;
-      --badge-veg: #0ea5e9;
-      --badge-veg-green: #22c55e;
-      --badge-nonveg: #ef4444;
       --code-bg: #090a0d;
       --radius-sm: 8px;
       --radius-md: 14px;
       --radius-lg: 20px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
@@ -45,9 +41,8 @@
       overflow-x: hidden;
     }
 
-    /* Header */
     header {
-      background: rgba(24, 25, 34, 0.85);
+      background: rgba(24, 25, 34, 0.9);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-subtle);
       position: sticky;
@@ -59,11 +54,7 @@
       justify-content: space-between;
     }
 
-    .brand-wrap {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    .brand-wrap { display: flex; align-items: center; gap: 12px; }
 
     .logo-badge {
       width: 38px;
@@ -95,11 +86,7 @@
       font-weight: 600;
     }
 
-    .header-controls {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    .header-controls { display: flex; align-items: center; gap: 12px; }
 
     .status-indicator {
       display: flex;
@@ -141,7 +128,6 @@
       color: var(--swiggy-orange);
     }
 
-    /* Main Container */
     main {
       flex: 1;
       max-width: 1280px;
@@ -154,12 +140,9 @@
     }
 
     @media (max-width: 1024px) {
-      main {
-        grid-template-columns: 1fr;
-      }
+      main { grid-template-columns: 1fr; }
     }
 
-    /* Hero / Search Section */
     .hero-card {
       background: linear-gradient(145deg, #181922 0%, #15161f 100%);
       border: 1px solid var(--border-subtle);
@@ -235,15 +218,9 @@
       transition: background 0.2s, transform 0.1s;
     }
 
-    .btn-search:hover {
-      background: var(--swiggy-orange-hover);
-    }
+    .btn-search:hover { background: var(--swiggy-orange-hover); }
+    .btn-search:active { transform: scale(0.98); }
 
-    .btn-search:active {
-      transform: scale(0.98);
-    }
-
-    /* Preset Pills */
     .pills-label {
       font-size: 0.76rem;
       font-weight: 700;
@@ -277,7 +254,28 @@
       transform: translateY(-1px);
     }
 
-    /* Comparison Deck */
+    .decision-banner {
+      background: linear-gradient(135deg, rgba(252, 128, 25, 0.1) 0%, rgba(34, 197, 94, 0.1) 100%);
+      border: 1px solid rgba(252, 128, 25, 0.3);
+      border-radius: var(--radius-md);
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .decision-stats { display: flex; gap: 32px; }
+    .stat-box { display: flex; flex-direction: column; }
+    .stat-lbl {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.8px;
+    }
+    .stat-val { font-size: 1.15rem; font-weight: 800; }
+
     .comparison-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -286,9 +284,7 @@
     }
 
     @media (max-width: 768px) {
-      .comparison-grid {
-        grid-template-columns: 1fr;
-      }
+      .comparison-grid { grid-template-columns: 1fr; }
     }
 
     .deck-column {
@@ -341,7 +337,6 @@
       gap: 8px;
     }
 
-    /* Item Cards */
     .food-card {
       background: var(--bg-card-hover);
       border: 1px solid var(--border-subtle);
@@ -351,9 +346,7 @@
       transition: border-color 0.2s;
     }
 
-    .food-card:hover {
-      border-color: var(--border-focus);
-    }
+    .food-card:hover { border-color: var(--border-focus); }
 
     .card-top {
       display: flex;
@@ -428,7 +421,6 @@
       color: #fff;
     }
 
-    /* Instamart Items */
     .im-item {
       display: flex;
       align-items: center;
@@ -440,71 +432,12 @@
       margin-bottom: 10px;
     }
 
-    .im-item-left {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
+    .im-item-left { display: flex; flex-direction: column; gap: 2px; }
+    .im-item-name { font-size: 0.88rem; font-weight: 600; }
+    .im-item-brand { font-size: 0.72rem; color: var(--text-faint); }
+    .im-item-price { font-size: 0.95rem; font-weight: 700; color: #22c55e; text-align: right; }
+    .im-item-mrp { font-size: 0.74rem; color: var(--text-faint); text-decoration: line-through; }
 
-    .im-item-name {
-      font-size: 0.88rem;
-      font-weight: 600;
-    }
-
-    .im-item-brand {
-      font-size: 0.72rem;
-      color: var(--text-faint);
-    }
-
-    .im-item-price {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #22c55e;
-      text-align: right;
-    }
-
-    .im-item-mrp {
-      font-size: 0.74rem;
-      color: var(--text-faint);
-      text-decoration: line-through;
-    }
-
-    /* Decision Summary Card */
-    .decision-banner {
-      background: linear-gradient(135deg, rgba(252, 128, 25, 0.1) 0%, rgba(34, 197, 94, 0.1) 100%);
-      border: 1px solid rgba(252, 128, 25, 0.3);
-      border-radius: var(--radius-md);
-      padding: 18px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 24px;
-    }
-
-    .decision-stats {
-      display: flex;
-      gap: 32px;
-    }
-
-    .stat-box {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .stat-lbl {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: var(--text-muted);
-      letter-spacing: 0.8px;
-    }
-
-    .stat-val {
-      font-size: 1.15rem;
-      font-weight: 800;
-    }
-
-    /* MCP Console Sidebar */
     .console-panel {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
@@ -556,28 +489,12 @@
       padding-left: 8px;
     }
 
-    .log-entry.req {
-      border-color: var(--swiggy-orange);
-    }
+    .log-entry.req { border-color: var(--swiggy-orange); }
+    .log-entry.res { border-color: #22c55e; }
+    .log-entry.err { border-color: #ef4444; }
 
-    .log-entry.res {
-      border-color: #22c55e;
-    }
-
-    .log-entry.err {
-      border-color: #ef4444;
-    }
-
-    .log-time {
-      color: var(--text-faint);
-      font-size: 0.68rem;
-    }
-
-    .log-meta {
-      font-weight: 600;
-      margin: 2px 0;
-    }
-
+    .log-time { color: var(--text-faint); font-size: 0.68rem; }
+    .log-meta { font-weight: 600; margin: 2px 0; }
     .log-meta.req { color: var(--swiggy-orange); }
     .log-meta.res { color: #22c55e; }
     .log-meta.err { color: #ef4444; }
@@ -591,7 +508,6 @@
       max-height: 120px;
     }
 
-    /* Modal */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -603,9 +519,7 @@
       padding: 20px;
     }
 
-    .modal-backdrop.open {
-      display: grid;
-    }
+    .modal-backdrop.open { display: grid; }
 
     .modal-box {
       background: var(--bg-card);
@@ -617,19 +531,8 @@
       box-shadow: 0 20px 40px rgba(0,0,0,0.6);
     }
 
-    .modal-title {
-      font-size: 1.2rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    .modal-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 18px;
-      line-height: 1.5;
-    }
-
+    .modal-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; }
+    .modal-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 18px; line-height: 1.5; }
     .input-field {
       width: 100%;
       background: var(--bg-dark);
@@ -640,13 +543,7 @@
       font-family: inherit;
       margin-bottom: 16px;
     }
-
-    .modal-actions {
-      display: flex;
-      justify-content: flex-end;
-      gap: 10px;
-    }
-
+    .modal-actions { display: flex; justify-content: flex-end; gap: 10px; }
     .btn-secondary {
       background: transparent;
       border: 1px solid var(--border-subtle);
@@ -670,7 +567,7 @@
       <div>
         <div class="brand-title">
           Swiggy CraveCraft
-          <span class="mcp-pill">MCP v1</span>
+          <span class="mcp-pill">v3.0 Live Engine</span>
         </div>
       </div>
     </div>
@@ -694,10 +591,10 @@
       <!-- Hero Card -->
       <section class="hero-card">
         <h1 class="hero-heading">What are you craving right now?</h1>
-        <p class="hero-sub">Enter any meal, craving, or comfort dish. We query Swiggy Food MCP to find the top ready dishes and Swiggy Instamart MCP to calculate the 10-minute grocery recipe.</p>
+        <p class="hero-sub">Type any dish, meal, or comfort food. Swiggy Food MCP searches top restaurants and dishes, while Swiggy Instamart MCP calculates the 10-minute grocery recipe.</p>
 
         <div class="search-bar-wrap">
-          <input type="text" class="input-craving" id="inputCraving" placeholder="e.g. Steamed Momos, Amul Butter Pav Bhaji, Dum Biryani, Farmhouse Pizza..." value="Steamed Momos">
+          <input type="text" class="input-craving" id="inputCraving" placeholder="e.g. Steamed Momos, Amul Butter Pav Bhaji, Farmhouse Pizza, Chicken Biryani..." value="Steamed Momos">
           <button class="btn-search" id="btnSearch">
             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
             Explore Options
@@ -705,13 +602,14 @@
         </div>
 
         <div>
-          <div class="pills-label">Popular Cravings:</div>
+          <div class="pills-label">Popular Cravings (1-Click Test):</div>
           <div class="pills-list">
             <button class="craving-pill" data-val="Steamed Momos">🥟 Steamed Momos</button>
-            <button class="craving-pill" data-val="Amul Butter Pav Bhaji">🥘 Amul Butter Pav Bhaji</button>
-            <button class="craving-pill" data-val="Special Dum Biryani">🍚 Special Dum Biryani</button>
+            <button class="craving-pill" data-val="Amul Butter Pav Bhaji">🥘 Pav Bhaji</button>
             <button class="craving-pill" data-val="Farmhouse Pizza">🍕 Farmhouse Pizza</button>
-            <button class="craving-pill" data-val="Crispy Veg Burger">🍔 Double Cheese Burger</button>
+            <button class="craving-pill" data-val="Crispy Veg Burger">🍔 Burger</button>
+            <button class="craving-pill" data-val="Special Dum Biryani">🍚 Biryani</button>
+            <button class="craving-pill" data-val="Masala Dosa">🥞 Masala Dosa</button>
             <button class="craving-pill" data-val="Ginger Masala Chai & Samosa">☕ Chai & Samosa</button>
           </div>
         </div>
@@ -726,15 +624,15 @@
         <div class="decision-stats">
           <div class="stat-box">
             <span class="stat-lbl">Swiggy Food</span>
-            <span class="stat-val" id="foodStatPrice">₹320</span>
+            <span class="stat-val" id="foodStatPrice">₹189</span>
           </div>
           <div class="stat-box">
             <span class="stat-lbl">Instamart Cook</span>
-            <span class="stat-val" style="color: #22c55e;" id="imStatPrice">₹189</span>
+            <span class="stat-val" style="color: #22c55e;" id="imStatPrice">₹124</span>
           </div>
           <div class="stat-box">
             <span class="stat-lbl">Savings</span>
-            <span class="stat-val" style="color: #ffc857;" id="statSavings">₹131 saved</span>
+            <span class="stat-val" style="color: #ffc857;" id="statSavings">₹65 saved</span>
           </div>
         </div>
       </section>
@@ -791,7 +689,7 @@
       <div class="log-stream" id="logStream">
         <div class="log-entry">
           <span class="log-time">[System]</span>
-          <div class="log-meta">Swiggy MCP Client initialized</div>
+          <div class="log-meta">Swiggy MCP Client v3.0 initialized</div>
           <p style="color: var(--text-faint);">Protocol: JSON-RPC 2.0 over Streamable HTTP</p>
         </div>
       </div>
@@ -804,7 +702,7 @@
       <h3 class="modal-title">Connect Swiggy MCP</h3>
       <p class="modal-desc">
         By default, CraveCraft runs in <strong>Sandbox Mode</strong> with authentic Swiggy schemas. 
-        If you have completed OAuth in Claude Desktop, Cursor, or have a Swiggy MCP Bearer token, paste it here to hit live endpoints.
+        If you have a Swiggy MCP Bearer token, paste it here to hit live endpoints.
       </p>
 
       <label style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 6px;">Swiggy Access Token (Bearer)</label>
@@ -817,7 +715,811 @@
     </div>
   </div>
 
-  <script src="swiggy-mcp-client.js"></script>
-  <script src="app.js"></script>
+  <!-- INLINE GUARANTEED ENGINE: Bypasses Browser Cache Completely -->
+  <script>
+    /**
+     * Swiggy MCP Client Class
+     */
+    class SwiggyMcpClient {
+      constructor(options = {}) {
+        this.token = options.token || '';
+        this.isSandbox = options.isSandbox !== undefined ? options.isSandbox : true;
+        this.foodUrl = options.foodUrl || 'https://mcp.swiggy.com/food';
+        this.instamartUrl = options.instamartUrl || 'https://mcp.swiggy.com/im';
+        this.requestId = 1;
+        this.onLog = options.onLog || (() => {});
+      }
+
+      setToken(token) {
+        this.token = token;
+        this.isSandbox = !(token && token.trim().length > 0);
+      }
+
+      setSandbox(isSandbox) {
+        this.isSandbox = isSandbox;
+      }
+
+      async callTool(serverType, toolName, args = {}) {
+        const endpoint = serverType === 'food' ? this.foodUrl : this.instamartUrl;
+        const reqPayload = {
+          jsonrpc: "2.0",
+          method: "tools/call",
+          params: { name: toolName, arguments: args },
+          id: this.requestId++
+        };
+
+        this.onLog({
+          type: 'request',
+          server: serverType,
+          endpoint,
+          payload: reqPayload,
+          timestamp: new Date().toLocaleTimeString()
+        });
+
+        if (this.isSandbox) {
+          await new Promise(r => setTimeout(r, 260));
+          const mockResult = this._getSandboxResponse(serverType, toolName, args);
+          this.onLog({
+            type: 'response',
+            server: serverType,
+            payload: mockResult,
+            isSandbox: true,
+            timestamp: new Date().toLocaleTimeString()
+          });
+          return mockResult;
+        }
+
+        try {
+          const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${this.token}`
+            },
+            body: JSON.stringify(reqPayload)
+          });
+
+          const data = await response.json();
+          this.onLog({
+            type: 'response',
+            server: serverType,
+            status: response.status,
+            payload: data,
+            isSandbox: false,
+            timestamp: new Date().toLocaleTimeString()
+          });
+
+          if (!response.ok) {
+            throw new Error(data.error_description || data.error?.message || `HTTP ${response.status}`);
+          }
+          return data.result || data;
+        } catch (err) {
+          this.onLog({
+            type: 'error',
+            server: serverType,
+            error: err.message,
+            timestamp: new Date().toLocaleTimeString()
+          });
+          throw err;
+        }
+      }
+
+      _toTitleCase(str) {
+        return (str || '').toLowerCase().replace(/(?:^|\s|-|\/)\S/g, c => c.toUpperCase()).trim();
+      }
+
+      _getSandboxResponse(serverType, toolName, args) {
+        const rawQuery = (args.query || '').trim();
+        const q = rawQuery.toLowerCase();
+        const title = this._toTitleCase(rawQuery) || 'Delicious Food';
+
+        if (serverType === 'food') {
+          return {
+            success: true,
+            data: { restaurants: this._buildFoodRestaurants(q, title) }
+          };
+        }
+
+        if (serverType === 'im') {
+          if (toolName === 'search_products') {
+            return {
+              success: true,
+              data: { products: this._buildInstamartProducts(q, title, args.groceries) }
+            };
+          }
+          if (toolName === 'update_cart') {
+            const count = args.items ? args.items.length : 3;
+            const subtotal = count * 65 + 40;
+            return {
+              success: true,
+              data: {
+                cartId: "cart_im_" + Math.random().toString(36).substring(2, 9),
+                itemsCount: count,
+                subtotal: subtotal,
+                deliveryFee: 15,
+                handlingFee: 5,
+                grandTotal: subtotal + 20,
+                slaMinutes: 10
+              },
+              message: "Cart updated successfully with Instamart items!"
+            };
+          }
+        }
+
+        return { success: true, data: { message: `Executed ${toolName}` } };
+      }
+
+      _buildFoodRestaurants(q, title) {
+        // MOMOS
+        if (q.includes('momo') || q.includes('dimsum') || q.includes('dumpling')) {
+          return [
+            {
+              id: "rest_wow_momo",
+              name: "Wow! Momo",
+              cuisine: ["Tibetan", "Chinese", "Momos"],
+              rating: 4.5,
+              sla: { deliveryTime: 20 },
+              dishes: [
+                {
+                  id: "dish_momo_01",
+                  name: "Darjeeling Veg Steamed Momos (8 Pcs)",
+                  price: 189,
+                  isVeg: true,
+                  description: "Thin wrapper dumplings packed with seasoned cabbage, carrots & onion. Served with spicy momo chutney.",
+                  rating: 4.6
+                },
+                {
+                  id: "dish_momo_02",
+                  name: "Pan Fried Schezwan Chicken Momos (8 Pcs)",
+                  price: 239,
+                  isVeg: false,
+                  description: "Crispy pan-seared chicken dumplings tossed in fiery schezwan sauce.",
+                  rating: 4.7
+                }
+              ],
+              coupons: [{ code: "MOMOMAGIC", discount: "Flat ₹50 OFF" }]
+            },
+            {
+              id: "rest_momo_zone",
+              name: "Momo Zone - The Momo Company",
+              cuisine: ["Momos", "Fast Food"],
+              rating: 4.3,
+              sla: { deliveryTime: 18 },
+              dishes: [
+                {
+                  id: "dish_momo_03",
+                  name: "Kurkure Cheese & Corn Fried Momos (6 Pcs)",
+                  price: 219,
+                  isVeg: true,
+                  description: "Extra-crunchy panko-crusted momos filled with molten cheese & sweet corn.",
+                  rating: 4.5
+                }
+              ],
+              coupons: [{ code: "SWIGGY50", discount: "20% OFF" }]
+            }
+          ];
+        }
+
+        // PAV BHAJI
+        if (q.includes('pav') || q.includes('bhaji') || q.includes('pavbhaji')) {
+          return [
+            {
+              id: "rest_sardar_pb",
+              name: "Sardar Refreshments & Pav Bhaji",
+              cuisine: ["Street Food", "Mumbai", "Fast Food"],
+              rating: 4.6,
+              sla: { deliveryTime: 18 },
+              dishes: [
+                {
+                  id: "dish_pb_01",
+                  name: "Special Amul Butter Pav Bhaji + 2 Soft Pavs",
+                  price: 195,
+                  isVeg: true,
+                  description: "Mumbai-style slow-simmered mashed vegetable bhaji drenched in melting Amul butter. Served with chopped onions & lemon.",
+                  rating: 4.7
+                },
+                {
+                  id: "dish_pb_02",
+                  name: "Extra Amul Butter Toasted Pav (Pair)",
+                  price: 45,
+                  isVeg: true,
+                  description: "Fluffy ladi pavs roasted golden-brown on tawa with generous butter and pav bhaji masala.",
+                  rating: 4.8
+                }
+              ],
+              coupons: [{ code: "MUMBAI50", discount: "20% OFF up to ₹50" }]
+            },
+            {
+              id: "rest_shiv_sagar",
+              name: "Shiv Sagar Pure Veg",
+              cuisine: ["North Indian", "Fast Food"],
+              rating: 4.4,
+              sla: { deliveryTime: 22 },
+              dishes: [
+                {
+                  id: "dish_pb_03",
+                  name: "Grated Amul Cheese Pav Bhaji",
+                  price: 235,
+                  isVeg: true,
+                  description: "Signature spiced bhaji topped with a thick layer of freshly grated cheddar cheese.",
+                  rating: 4.5
+                }
+              ],
+              coupons: [{ code: "VEGDEAL", discount: "Flat ₹40 OFF" }]
+            }
+          ];
+        }
+
+        // PIZZA
+        if (q.includes('pizza')) {
+          return [
+            {
+              id: "rest_lapinoz",
+              name: "La Pino'z Pizza",
+              cuisine: ["Pizza", "Italian"],
+              rating: 4.4,
+              sla: { deliveryTime: 25 },
+              dishes: [
+                {
+                  id: "dish_piz_01",
+                  name: "Farm Villa Gourmet Pizza (Regular 7\")",
+                  price: 245,
+                  isVeg: true,
+                  description: "Crunchy bell peppers, red onions, sweet corn, tomatoes & 100% real mozzarella cheese.",
+                  rating: 4.5
+                }
+              ],
+              coupons: [{ code: "PIZZA50", discount: "50% OFF up to ₹100" }]
+            }
+          ];
+        }
+
+        // BURGER
+        if (q.includes('burger')) {
+          return [
+            {
+              id: "rest_bk",
+              name: "Burger King",
+              cuisine: ["Burgers", "American"],
+              rating: 4.3,
+              sla: { deliveryTime: 18 },
+              dishes: [
+                {
+                  id: "dish_bur_01",
+                  name: "Crispy Veg Double Patty Whopper",
+                  price: 189,
+                  isVeg: true,
+                  description: "Sesame bun, double crispy vegetable patties, creamy mayo and lettuce.",
+                  rating: 4.4
+                }
+              ],
+              coupons: [{ code: "BKFEST", discount: "20% OFF" }]
+            }
+          ];
+        }
+
+        // BIRYANI
+        if (q.includes('biryani') || q.includes('pulao')) {
+          const isCh = q.includes('chicken');
+          return [
+            {
+              id: "rest_meghana",
+              name: "Meghana Foods",
+              cuisine: ["Biryani", "Andhra"],
+              rating: 4.5,
+              sla: { deliveryTime: 22 },
+              dishes: [
+                {
+                  id: "dish_bir_01",
+                  name: isCh ? "Hyderabadi Chicken Dum Biryani" : "Special Paneer Dum Biryani",
+                  price: isCh ? 360 : 320,
+                  isVeg: !isCh,
+                  description: "Fragrant basmati rice layered with aromatic spices, served with raita and salan.",
+                  rating: 4.7
+                }
+              ],
+              coupons: [{ code: "SWIGGYIT", discount: "20% OFF" }]
+            }
+          ];
+        }
+
+        // DOSA / SOUTH INDIAN
+        if (q.includes('dosa') || q.includes('idli')) {
+          return [
+            {
+              id: "rest_rameshwaram",
+              name: "The Rameshwaram Cafe",
+              cuisine: ["South Indian"],
+              rating: 4.7,
+              sla: { deliveryTime: 16 },
+              dishes: [
+                {
+                  id: "dish_dosa_01",
+                  name: "Ghee Roast Masala Dosa + Chutneys & Sambar",
+                  price: 155,
+                  isVeg: true,
+                  description: "Crispy golden dosa roasted in pure desi ghee, stuffed with potato palya.",
+                  rating: 4.8
+                }
+              ],
+              coupons: [{ code: "GHEE10", discount: "10% OFF" }]
+            }
+          ];
+        }
+
+        // DYNAMIC CULINARY ENGINE FOR ANY OTHER FOOD
+        return [
+          {
+            id: `rest_${q.replace(/[^a-z0-9]/g, '_')}_01`,
+            name: `${title} Kitchen & Express`,
+            cuisine: [title, "Fast Food"],
+            rating: 4.5,
+            sla: { deliveryTime: 22 },
+            dishes: [
+              {
+                id: `dish_${q.replace(/[^a-z0-9]/g, '_')}_1`,
+                name: `Signature Authentic ${title} Special`,
+                price: 240,
+                isVeg: !q.includes('chicken') && !q.includes('meat'),
+                description: `Freshly prepared chef's special ${title}, cooked with authentic spices and delivered warm.`,
+                rating: 4.6
+              }
+            ],
+            coupons: [{ code: "SWIGGYDEAL", discount: "20% OFF up to ₹50" }]
+          }
+        ];
+      }
+
+      _buildInstamartProducts(q, title, groceriesList) {
+        // MOMOS
+        if (q.includes('momo') || q.includes('dimsum') || q.includes('dumpling')) {
+          return [
+            this._makeProduct("Fortune Maida / All-Purpose Flour", "Fortune", 48, 42, "Pack of 500 g"),
+            this._makeProduct("Fresh Cabbage & Shredded Carrots Combo", "Instamart Fresh", 65, 49, "500 g Combo Pack"),
+            this._makeProduct("Ching's Secret Schezwan Chutney", "Ching's", 85, 75, "Bottle of 250 g"),
+            this._makeProduct("Fresh Spring Onion & Garlic", "Instamart Fresh", 40, 32, "200 g Combo Pack")
+          ];
+        }
+
+        // PAV BHAJI
+        if (q.includes('pav') || q.includes('bhaji') || q.includes('pavbhaji')) {
+          return [
+            this._makeProduct("The Baker's Dozen Fresh Ladi Pav", "The Baker's Dozen", 50, 44, "Pack of 6 Pavs"),
+            this._makeProduct("Amul Pasteurized Butter", "Amul", 60, 56, "Pack of 100 g"),
+            this._makeProduct("Fresh Potatoes (1 kg) & Green Peas (500 g)", "Instamart Fresh", 95, 79, "Fresh Veggie Combo"),
+            this._makeProduct("Everest Pav Bhaji Masala", "Everest", 82, 74, "Carton of 100 g"),
+            this._makeProduct("Fresh Tomatoes & Onions Combo", "Instamart Fresh", 70, 58, "1 kg Combo")
+          ];
+        }
+
+        // PIZZA
+        if (q.includes('pizza')) {
+          return [
+            this._makeProduct("English Oven Thin Crust Pizza Base", "English Oven", 65, 55, "Pack of 2 Bases (8\")"),
+            this._makeProduct("Amul Diced Mozzarella Pizza Cheese", "Amul", 130, 115, "Pouch of 200 g"),
+            this._makeProduct("Veeba Pizza & Pasta Sauce", "Veeba", 99, 85, "Jar of 280 g"),
+            this._makeProduct("Fresh Bell Peppers & Corn Combo", "Instamart Fresh", 75, 62, "Combo Pack")
+          ];
+        }
+
+        // BURGER
+        if (q.includes('burger')) {
+          return [
+            this._makeProduct("English Oven Sesame Burger Buns", "English Oven", 55, 48, "Pack of 4 Buns"),
+            this._makeProduct("ITC Master Chef Crispy Veggie Patties", "ITC", 175, 149, "Pack of 4 Patties (400g)"),
+            this._makeProduct("Amul Processed Cheese Slices", "Amul", 90, 82, "Pack of 5 Slices"),
+            this._makeProduct("Veeba Burger Mayonnaise", "Veeba", 89, 75, "Pouch of 250 g")
+          ];
+        }
+
+        // BIRYANI
+        if (q.includes('biryani') || q.includes('pulao')) {
+          return [
+            this._makeProduct("India Gate Super Basmati Rice", "India Gate", 195, 168, "Bag of 1 kg"),
+            this._makeProduct("Amul Malai Fresh Paneer", "Amul", 95, 89, "200 g Pack"),
+            this._makeProduct("Fresh Red Onions & Mint Leaves", "Instamart Fresh", 55, 45, "1 kg Combo"),
+            this._makeProduct("Everest Shahi Biryani Masala", "Everest", 85, 76, "Box of 50 g")
+          ];
+        }
+
+        // DOSA
+        if (q.includes('dosa') || q.includes('idli')) {
+          return [
+            this._makeProduct("iD Fresh Idli & Dosa Batter", "iD Fresh", 95, 85, "Pouch of 1 kg"),
+            this._makeProduct("Fresh Grated Coconut", "Instamart Fresh", 50, 42, "200 g Pack"),
+            this._makeProduct("MTR Authentic Sambar Powder", "MTR", 70, 62, "100 g Pack"),
+            this._makeProduct("Nandini Pure Cow Ghee", "Nandini", 135, 125, "Jar of 200 ml")
+          ];
+        }
+
+        // DYNAMIC INGREDIENTS FOR ANY OTHER FOOD
+        const items = groceriesList && groceriesList.length > 0 ? groceriesList : this.decomposeCravingToGroceries(q);
+        return items.map((item, idx) => {
+          const prices = [75, 55, 45, 65];
+          const mrp = prices[idx % prices.length];
+          const offer = mrp - Math.floor(mrp * 0.12);
+          return this._makeProduct(item.name, "Instamart Staple", mrp, offer, "Standard Pack");
+        });
+      }
+
+      _makeProduct(displayName, brand, mrp, offerPrice, quantityDesc) {
+        const id = "prod_" + displayName.toLowerCase().replace(/[^a-z0-9]/g, '_');
+        return {
+          displayName: displayName,
+          brand: brand,
+          inStock: true,
+          isAvail: true,
+          productId: id,
+          variations: [{
+            spinId: "spin_" + id,
+            skuId: "sku_" + id,
+            displayName: displayName + (quantityDesc ? ` (${quantityDesc})` : ''),
+            brandName: brand,
+            price: { mrp: mrp, offerPrice: offerPrice },
+            isInStockAndAvailable: true,
+            sla: { value: "8-12", unit: "mins" },
+            vegClassifier: displayName.toLowerCase().includes('chicken') ? "NON_VEG" : "VEG"
+          }]
+        };
+      }
+
+      decomposeCravingToGroceries(craving) {
+        const c = (craving || '').toLowerCase();
+        const title = this._toTitleCase(craving);
+
+        if (c.includes('momo') || c.includes('dimsum')) {
+          return [
+            { name: "Maida / All-Purpose Flour (500g)", query: "maida" },
+            { name: "Cabbage & Carrots Combo (500g)", query: "cabbage" },
+            { name: "Schezwan Momo Chutney (250g)", query: "schezwan sauce" },
+            { name: "Spring Onion & Garlic", query: "garlic" }
+          ];
+        }
+
+        if (c.includes('pav') || c.includes('bhaji')) {
+          return [
+            { name: "Fresh Ladi Pavs (Pack of 6)", query: "ladi pav" },
+            { name: "Amul Butter (100g)", query: "amul butter" },
+            { name: "Potatoes (1kg) & Green Peas (500g)", query: "potato" },
+            { name: "Pav Bhaji Masala (100g)", query: "pav bhaji masala" },
+            { name: "Fresh Tomatoes & Onions", query: "tomato" }
+          ];
+        }
+
+        if (c.includes('pizza')) {
+          return [
+            { name: "Pizza Base (Pack of 2)", query: "pizza base" },
+            { name: "Mozzarella Pizza Cheese (200g)", query: "mozzarella" },
+            { name: "Pizza Sauce (280g)", query: "pizza sauce" },
+            { name: "Bell Peppers & Corn", query: "capsicum" }
+          ];
+        }
+
+        if (c.includes('burger')) {
+          return [
+            { name: "Sesame Burger Buns (Pack of 4)", query: "burger bun" },
+            { name: "Veggie / Chicken Patties (400g)", query: "patties" },
+            { name: "Cheese Slices (Pack of 5)", query: "cheese slice" },
+            { name: "Burger Mayonnaise (250g)", query: "mayonnaise" }
+          ];
+        }
+
+        if (c.includes('biryani')) {
+          return [
+            { name: "Super Basmati Rice (1kg)", query: "basmati rice" },
+            { name: "Fresh Paneer or Chicken", query: "paneer" },
+            { name: "Red Onions & Mint", query: "onion" },
+            { name: "Biryani Masala", query: "biryani masala" }
+          ];
+        }
+
+        if (c.includes('dosa') || c.includes('idli')) {
+          return [
+            { name: "Fresh Dosa / Idli Batter (1kg)", query: "batter" },
+            { name: "Grated Coconut (200g)", query: "coconut" },
+            { name: "Sambar Masala", query: "sambar powder" },
+            { name: "Pure Cow Ghee", query: "ghee" }
+          ];
+        }
+
+        return [
+          { name: `Fresh Key Ingredients for ${title}`, query: c.split(' ')[0] || "paneer" },
+          { name: `Cooking Butter / Refined Oil`, query: "butter" },
+          { name: `Aromatic Spices & Seasoning for ${title}`, query: "spices" },
+          { name: `Fresh Herb & Vegetable Garnish Pack`, query: "onion" }
+        ];
+      }
+    }
+
+    // -------------------------------------------------------------
+    // UI APPLICATION CONTROLLER
+    // -------------------------------------------------------------
+    const mcp = new SwiggyMcpClient({ isSandbox: true, onLog: renderMcpLog });
+
+    const inputCraving = document.getElementById('inputCraving');
+    const btnSearch = document.getElementById('btnSearch');
+    const foodResultsContainer = document.getElementById('foodResultsContainer');
+    const imResultsContainer = document.getElementById('imResultsContainer');
+    const decisionBanner = document.getElementById('decisionBanner');
+    const foodStatPrice = document.getElementById('foodStatPrice');
+    const imStatPrice = document.getElementById('imStatPrice');
+    const statSavings = document.getElementById('statSavings');
+    const logStream = document.getElementById('logStream');
+    const btnClearLogs = document.getElementById('btnClearLogs');
+    const statusDot = document.getElementById('statusDot');
+    const statusLabel = document.getElementById('statusLabel');
+
+    const btnOpenTokenModal = document.getElementById('btnOpenTokenModal');
+    const tokenModal = document.getElementById('tokenModal');
+    const btnCancelToken = document.getElementById('btnCancelToken');
+    const btnSaveToken = document.getElementById('btnSaveToken');
+    const tokenInput = document.getElementById('tokenInput');
+
+    // 1-Click Pill Listeners
+    document.querySelectorAll('.craving-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        inputCraving.value = pill.getAttribute('data-val');
+        runCravingQuery();
+      });
+    });
+
+    btnSearch.addEventListener('click', runCravingQuery);
+    inputCraving.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') runCravingQuery();
+    });
+
+    btnClearLogs.addEventListener('click', () => { logStream.innerHTML = ''; });
+
+    btnOpenTokenModal.addEventListener('click', () => tokenModal.classList.add('open'));
+    btnCancelToken.addEventListener('click', () => tokenModal.classList.remove('open'));
+    btnSaveToken.addEventListener('click', () => {
+      const token = tokenInput.value.trim();
+      if (token) {
+        mcp.setToken(token);
+        statusDot.style.background = '#38bdf8';
+        statusDot.style.boxShadow = '0 0 8px #38bdf8';
+        statusLabel.textContent = 'Live MCP Active';
+        renderSystemLog('Swiggy Bearer Token set. Direct live requests active.');
+      } else {
+        mcp.setSandbox(true);
+        statusDot.style.background = '#22c55e';
+        statusDot.style.boxShadow = '0 0 8px #22c55e';
+        statusLabel.textContent = 'Sandbox Mode';
+        renderSystemLog('Switched back to Sandbox Mode.');
+      }
+      tokenModal.classList.remove('open');
+    });
+
+    async function runCravingQuery() {
+      const craving = inputCraving.value.trim();
+      if (!craving) return;
+
+      btnSearch.disabled = true;
+      btnSearch.textContent = 'Searching...';
+
+      foodResultsContainer.innerHTML = `<div style="text-align:center; padding:30px; color:var(--text-muted);">Finding dishes for "${craving}" on Swiggy Food MCP...</div>`;
+      imResultsContainer.innerHTML = `<div style="text-align:center; padding:30px; color:var(--text-muted);">Finding groceries for "${craving}" on Swiggy Instamart MCP...</div>`;
+
+      try {
+        const groceryList = mcp.decomposeCravingToGroceries(craving);
+
+        const foodPromise = mcp.callTool('food', 'search_restaurants', {
+          query: craving,
+          addressId: 'addr_user_home'
+        });
+
+        const imPromise = mcp.callTool('im', 'search_products', {
+          query: craving,
+          addressId: 'addr_user_home',
+          groceries: groceryList
+        });
+
+        const [foodRes, imRes] = await Promise.all([foodPromise, imPromise]);
+
+        renderFoodResults(foodRes, craving);
+        renderInstamartResults(imRes, groceryList);
+        renderVerdict(foodRes, imRes);
+
+      } catch (err) {
+        renderSystemLog(`Error executing tools: ${err.message}`, true);
+      } finally {
+        btnSearch.disabled = false;
+        btnSearch.innerHTML = `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg> Explore Options`;
+      }
+    }
+
+    function renderFoodResults(res, query) {
+      const data = res?.data || res;
+      const restaurants = data?.restaurants || [];
+
+      if (!restaurants.length) {
+        foodResultsContainer.innerHTML = `<div style="color:var(--text-muted); padding:20px;">No restaurants found for "${query}".</div>`;
+        return;
+      }
+
+      let html = '';
+      restaurants.forEach(r => {
+        const dishes = r.dishes && r.dishes.length > 0 ? r.dishes : [{ name: query, price: 210, isVeg: true, rating: 4.5, description: 'Freshly prepared and delivered warm.' }];
+        const coupon = r.coupons?.[0] || { code: 'SWIGGYIT', discount: '20% OFF' };
+
+        dishes.forEach(dish => {
+          html += `
+            <div class="food-card">
+              <div class="card-top">
+                <div>
+                  <div class="dish-title">
+                    <span style="display:inline-block; width:10px; height:10px; border-radius:2px; border:2px solid ${dish.isVeg ? '#22c55e' : '#ef4444'};"></span>
+                    ${dish.name}
+                  </div>
+                  <div class="restaurant-meta">
+                    <span>🏠 <strong>${r.name}</strong></span>
+                    <span>⭐ ${dish.rating || r.rating || 4.5}</span>
+                    <span>⏱️ ${r.sla?.deliveryTime || 20} mins</span>
+                  </div>
+                </div>
+                <div class="dish-price">₹${dish.price}</div>
+              </div>
+
+              <p class="dish-desc">${dish.description || 'Authentic preparation delivered warm to your doorstep.'}</p>
+
+              <div class="card-footer">
+                <span class="coupon-badge">🏷️ ${coupon.code}: ${coupon.discount}</span>
+                <button class="btn-action-sm" onclick="prepareFoodCart('${r.id}', '${dish.id}', '${dish.name.replace(/'/g, "\\'")}', ${dish.price})">
+                  Add to Food Cart
+                </button>
+              </div>
+            </div>
+          `;
+        });
+      });
+
+      foodResultsContainer.innerHTML = html;
+    }
+
+    function renderInstamartResults(res, groceryList) {
+      const data = res?.data || res;
+      const products = data?.products || [];
+
+      let html = `
+        <div style="font-size:0.78rem; color:var(--text-muted); margin-bottom:12px;">
+          Recipe broken down into <strong>${products.length} essential grocery items</strong>:
+        </div>
+      `;
+
+      let totalImCost = 0;
+      const cartItemsPayload = [];
+
+      products.forEach((p, idx) => {
+        const variation = p.variations?.[0] || {};
+        const price = variation.price?.offerPrice || variation.price?.mrp || 60;
+        const mrp = variation.price?.mrp || price;
+        totalImCost += price;
+
+        cartItemsPayload.push({
+          spinId: variation.spinId || "spin_" + idx,
+          skuId: variation.skuId || "sku_" + idx,
+          quantity: 1
+        });
+
+        html += `
+          <div class="im-item">
+            <div class="im-item-left">
+              <span class="im-item-name">${variation.displayName || p.displayName}</span>
+              <span class="im-item-brand">${p.brand || 'Instamart Fresh'} • ⏱️ 10 mins delivery</span>
+            </div>
+            <div>
+              <div class="im-item-price">₹${price}</div>
+              ${mrp > price ? `<div class="im-item-mrp">₹${mrp}</div>` : ''}
+            </div>
+          </div>
+        `;
+      });
+
+      html += `
+        <div style="margin-top:16px; padding-top:12px; border-top:1px solid var(--border-subtle); display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Est. Grocery Total:</div>
+            <div style="font-size:1.1rem; font-weight:800; color:#22c55e;">₹${totalImCost}</div>
+          </div>
+          <button class="btn-action-sm" style="border-color:#22c55e; color:#22c55e; background:rgba(34,197,94,0.1);" onclick='updateInstamartCart(${JSON.stringify(cartItemsPayload)})'>
+            ⚡ Update Instamart Cart
+          </button>
+        </div>
+      `;
+
+      imResultsContainer.innerHTML = html;
+    }
+
+    function renderVerdict(foodRes, imRes) {
+      const foodRest = foodRes?.data?.restaurants?.[0];
+      const foodPrice = foodRest?.dishes?.[0]?.price || 200;
+
+      const imProducts = imRes?.data?.products || [];
+      let imPrice = 0;
+      imProducts.forEach(p => {
+        const varObj = p.variations?.[0] || {};
+        imPrice += (varObj.price?.offerPrice || 45);
+      });
+      if (imPrice === 0) imPrice = 120;
+
+      foodStatPrice.textContent = `₹${foodPrice}`;
+      imStatPrice.textContent = `₹${imPrice}`;
+
+      const diff = foodPrice - imPrice;
+      if (diff > 0) {
+        statSavings.textContent = `₹${diff} saved`;
+        document.getElementById('verdictTitle').textContent = `🍳 Instamart wins on budget!`;
+        document.getElementById('verdictSubtitle').textContent = `Cook it yourself to save ₹${diff}. Grocery arrives in ~10 mins.`;
+      } else {
+        statSavings.textContent = `Similar cost`;
+        document.getElementById('verdictTitle').textContent = `🛵 Food delivery wins on convenience!`;
+        document.getElementById('verdictSubtitle').textContent = `Ready-to-eat delivered warm in ~20 mins with zero prep.`;
+      }
+
+      decisionBanner.style.display = 'flex';
+    }
+
+    window.prepareFoodCart = async function(restaurantId, dishId, dishName, price) {
+      renderSystemLog(`Preparing Food Cart via MCP tool: update_food_cart`);
+      await mcp.callTool('food', 'update_food_cart', {
+        restaurantId,
+        items: [{ dishId, quantity: 1 }]
+      });
+      alert(`Added "${dishName}" (₹${price}) to your Swiggy Food cart!`);
+    };
+
+    window.updateInstamartCart = async function(items) {
+      renderSystemLog(`Calling Instamart MCP tool: update_cart with ${items.length} SKUs`);
+      await mcp.callTool('im', 'update_cart', { items });
+      alert(`Swiggy Instamart cart updated with ${items.length} items! Ready for 10-minute checkout.`);
+    };
+
+    function renderMcpLog(log) {
+      const entry = document.createElement('div');
+      entry.className = `log-entry ${log.type === 'request' ? 'req' : (log.type === 'error' ? 'err' : 'res')}`;
+
+      const time = document.createElement('span');
+      time.className = 'log-time';
+      time.textContent = `[${log.timestamp}] `;
+
+      const meta = document.createElement('div');
+      meta.className = `log-meta ${log.type === 'request' ? 'req' : (log.type === 'error' ? 'err' : 'res')}`;
+      
+      if (log.type === 'request') {
+        meta.textContent = `➔ ${log.server.toUpperCase()} MCP · ${log.payload.params.name}`;
+      } else if (log.type === 'response') {
+        meta.textContent = `✔ ${log.server.toUpperCase()} MCP Response (${log.isSandbox ? 'Sandbox' : 'Live'})`;
+      } else {
+        meta.textContent = `✖ Error: ${log.error}`;
+      }
+
+      const pre = document.createElement('pre');
+      pre.className = 'payload-block';
+      pre.textContent = JSON.stringify(log.payload || log.error, null, 2);
+
+      entry.appendChild(time);
+      entry.appendChild(meta);
+      entry.appendChild(pre);
+
+      logStream.appendChild(entry);
+      logStream.scrollTop = logStream.scrollHeight;
+    }
+
+    function renderSystemLog(msg, isError = false) {
+      const entry = document.createElement('div');
+      entry.className = `log-entry ${isError ? 'err' : ''}`;
+      entry.innerHTML = `
+        <span class="log-time">[${new Date().toLocaleTimeString()}]</span>
+        <div class="log-meta ${isError ? 'err' : ''}">${isError ? '✖' : 'ℹ️'} ${msg}</div>
+      `;
+      logStream.appendChild(entry);
+      logStream.scrollTop = logStream.scrollHeight;
+    }
+
+    // Auto-run query on load
+    window.addEventListener('DOMContentLoaded', () => {
+      runCravingQuery();
+    });
+  </script>
 </body>
 </html>
